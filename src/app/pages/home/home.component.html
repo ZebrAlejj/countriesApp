@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col">
+
+        <div class="row justify-content-around">
+            <h3 class="col-6">Countries list</h3>
+
+            <button (click)="refreshTopCountries()" 
+                class="col-2 btn btn-outline-success">
+                Refresh <i class="fas fa-redo-alt"></i>
+                
+            </button>
+            <!-- <button (click)="saveTopCountries()"  -->
+            <button
+                class="col-2 btn btn-outline-success">
+                Save <i class="far fa-save"></i>
+            </button>
+        </div>
+        
+        <table *ngIf="topCountries.length > 0" 
+            class="table table-dark table-hover mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Flag</th>
+                    <th (click)="sortCountries('name')"
+                    scope="col"
+                    style="cursor: pointer;">
+                       Country {{sortByCountry ? '▼' : '▲'}}
+                    </th>
+                    <th (click)="sortCountries('capital')"
+                    scope="col"
+                    style="cursor: pointer;">
+                        Capital {{sortByCity ? '▼' : '▲'}}
+                    </th>
+                    <th>
+                        Information
+                    </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let country of topCountries">
+                    <th scope="row">
+                        <img [src]="country.flag" class="flag">
+                    </th>
+                    <td>
+                        {{country.name}}
+                    </td>
+                    <td>
+                        {{country.capital}}
+                    </td>
+                    <!-- <td *ngIf="!country.capital">
+                        No capital
+                    </td> -->
+                    <td>
+                    <a class="text-danger" 
+                    (click)="onMoreClick(country)"
+                    style="cursor: pointer;">
+                        More...
+                    </a>
+                    </td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+</div>
