@@ -27,11 +27,12 @@ export class CountriesService {
       formData.append('capital', country.capital)
       formData.append('flag', country.flag)
       
-     await this.http.post<Country>(`${environment.url}`,formData)
-     .subscribe( 
-       (response) => console.log(response.name + ' inserted'),
-       (error) => console.log('Country already exist')
-     )
+      
+    //  await this.http.post<Country>(`${environment.url}`,formData)
+    //  .subscribe( 
+    //    (response) => console.log(response.name + ' inserted'),
+    //    (error) => console.log('Country already exist')
+    //  )
     })
     return
   }
