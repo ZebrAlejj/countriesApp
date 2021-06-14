@@ -12,15 +12,18 @@ export class InfoCountryComponent implements OnInit, AfterViewInit {
 
   public country:Country
   public code:string
+  public loading:boolean = true
+
   constructor( private activatedRoute: ActivatedRoute,
      private countriesService: CountriesService) { }
 
   ngOnInit(): void {
     this.code = this.activatedRoute.snapshot.params.code
     this.countriesService.getCountry(this.code)
-    .subscribe(resp => 
+    .subscribe(resp => {
       this.country = resp
-    )
+      this.loading = false
+    })
   }
   
   ngAfterViewInit():void{
